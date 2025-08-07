@@ -2,7 +2,7 @@
 This repository contains all applications and application prototypes created by Caleb Eason for WEB701.
 
 ## Project
-(WEB701-Project)[https://github.com/users/Calzep/projects/7]
+[WEB701-Project](https://github.com/users/Calzep/projects/7)
 
 ## Docummentation
 - Report: ./Documentation/WEB701 Assessment.docx
@@ -10,3 +10,4 @@ This repository contains all applications and application prototypes created by 
 
 ## Code
 - Express Prototype: ./ExpressAPIPrototype
+
