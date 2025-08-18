@@ -1,9 +1,16 @@
 const express = require('express')
+const mongoose = require('mongoose')
+
+const UserModel =  require("./models/User")
+const ServiceModel = require("./models/Service")
+const ServicePurchaseModel = require("./models/ServicePurchase")
 
 const app = express()
-const port = 3000
-
+const port = 70101
+const mongoUrl = "mongodb+srv://admin:admin@prototypeapps.bvtt3cc.mongodb.net/SharedMExNDatabase"
 app.use(express.json())
+
+mongoose.connect(mongoUrl, {})
 
 app.get('/', async (req, res) => {
     res.status(200).send("Connected to Nelson Disaster Response backend server MEAN stack prototype")
