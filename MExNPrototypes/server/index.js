@@ -9,7 +9,8 @@ const UserModel =  require("./models/User")
 const ServiceModel = require("./models/Service")
 const ServicePurchaseModel = require("./models/ServicePurchase")
 
-const authMiddleware = require("./middleware/auth")
+const authenticationRequired = require("./middleware/authentication")
+const requiredRole = require("./middleware/authorisation")
 
 const app = express()
 const port = 7011
@@ -63,7 +64,7 @@ app.post('/api/register', async (req, res) => {
 
 
 //ANCHOR Get user
-app.get('/api/user/:id', authMiddleware, async (req, res) => {
+app.get('/api/user/:id', authenticationRequired, async (req, res) => {
     try {
         if (req.user.id !== req.params.id) {
             return res.status(403).json({ error: "Forbidden" });
@@ -111,7 +112,7 @@ app.get('/api/service/:id', async (req, res) => {
 
 
 //ANCHOR Create service purchase
-app.post('/api/service-purchase', authMiddleware, async (req, res) => {
+app.post('/api/service-purchase', authenticationRequired, requiredRole("beneficiary"), async (req, res) => {
     try {
         const { serviceId, userId } = req.body;
 
@@ -158,7 +159,7 @@ app.post('/api/service-purchase', authMiddleware, async (req, res) => {
 
 
 //ANCHOR List service purchases
-app.get('/api/service-purchases', authMiddleware, async (req, res) => {
+app.get('/api/service-purchases', authenticationRequired, requiredRole("member"), async (req, res) => {
     try {
         const purchases = await ServicePurchaseModel.find()
             .populate('service', 'name tokenCost')  // only return certain fields
@@ -171,7 +172,7 @@ app.get('/api/service-purchases', authMiddleware, async (req, res) => {
 
 
 //ANCHOR Update service purchase
-app.put('/api/service-purchase/:id', authMiddleware, async (req, res) => {
+app.put('/api/service-purchase/:id', authenticationRequired, requiredRole("member"), async (req, res) => {
     try {
         const updates = { status: req.body.status }
 
