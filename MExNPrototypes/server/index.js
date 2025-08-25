@@ -8,7 +8,7 @@ const ServiceModel = require("./models/Service")
 const ServicePurchaseModel = require("./models/ServicePurchase")
 
 const app = express()
-const port = 70101
+const port = 7011
 const mongoUrl = "mongodb+srv://admin:admin@prototypeapps.bvtt3cc.mongodb.net/SharedMExNDatabase"
 app.use(express.json())
 
@@ -27,13 +27,13 @@ app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        const user = await UserModel.findOne({ email: username })
+        const user = await UserModel.findOne({ email: email })
 
-        if (!user || !(await user.comparePassword(req.body.password))) {
+        if (!user || !(user.password == password)) {
             return res.status(401).json({ error: 'Invalid credentials' })
         }
 
-        return res.status(200).json({ message: 'Login successful' })
+        res.status(200).json({ message: 'Login successful' })
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
@@ -62,7 +62,7 @@ app.get('/api/user/:id', async (req, res) => {
             return res.status(404).json({error: "User not found"})
         }
 
-        return res.status(200).json({ user: user })
+        return res.status(200).json(user)
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
@@ -73,7 +73,7 @@ app.get('/api/user/:id', async (req, res) => {
 //ANCHOR List services
 app.get('/api/services', async (req, res) => {
     try {
-        const services = await ServiceModel.find();
+        const services = await ServiceModel.find()
         res.status(200).json(services);
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}` });
@@ -84,7 +84,7 @@ app.get('/api/services', async (req, res) => {
 //ANCHOR Get service
 app.get('/api/service/:id', async (req, res) => {
     try {
-        const service = await ServiceModel.findById(req.params.id);
+        const service = await ServiceModel.findById(req.params.id)
 
         if (!service) {
             return res.status(404).json({ error: 'Service not found' });
@@ -100,12 +100,44 @@ app.get('/api/service/:id', async (req, res) => {
 //ANCHOR Create service purchase
 app.post('/api/service-purchase', async (req, res) => {
     try {
+        const { serviceId, userId } = req.body;
+
+        // Get service
+        const service = await ServiceModel.findById(serviceId);
+        if (!service) {
+            return res.status(404).json({ error: 'Service not found' });
+        }
+
+        // Get user
+        const user = await UserModel.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Check token balance
+        if (user.tokens < service.tokenCost) {
+            return res.status(400).json({ error: 'Not enough tokens' });
+        }
+
+        // Deduct tokens
+        user.tokens -= service.tokenCost;
+        await user.save();
+
+        // Create purchase record
         const purchase = new ServicePurchaseModel({
-            ...req.body,
-            date: new Date()
+            service: service._id,
+            user: user._id,
+            date: new Date(),
+            status: 'pending',           // could default to "pending"
+            temporalTokenCost: service.tokenCost
         });
         await purchase.save();
-        res.status(200).json({ message: 'Service purchased', purchase });
+
+        res.json({ 
+            message: 'Service purchased successfully',
+            remainingTokens: user.tokens,
+            purchase
+        });
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
@@ -115,7 +147,9 @@ app.post('/api/service-purchase', async (req, res) => {
 //ANCHOR List service purchases
 app.get('/api/service-purchases', async (req, res) => {
     try {
-        const purchases = await ServicePurchaseModel.find();
+        const purchases = await ServicePurchaseModel.find()
+            .populate('service', 'name tokenCost')  // only return certain fields
+            .populate('user', 'email firstName lastName tokens userType');
         res.status(200).json(purchases);
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}` });

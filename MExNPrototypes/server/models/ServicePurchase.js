@@ -2,11 +2,13 @@ const mongoose = require('mongoose')
 
 const ServicePurchaseSchema = new mongoose.Schema({
     service: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service',
         required: true,
     },
     user: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     date: {
