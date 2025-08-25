@@ -2,10 +2,14 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
+const jwt = require("./util/jwt")
 
 const UserModel =  require("./models/User")
 const ServiceModel = require("./models/Service")
 const ServicePurchaseModel = require("./models/ServicePurchase")
+
+const authMiddleware = require("./middleware/auth")
 
 const app = express()
 const port = 7011
@@ -29,11 +33,13 @@ app.post('/api/login', async (req, res) => {
 
         const user = await UserModel.findOne({ email: email })
 
-        if (!user || !(user.password == password)) {
+        if (!user || !(user.comparePassword(password))) {
             return res.status(401).json({ error: 'Invalid credentials' })
         }
 
-        res.status(200).json({ message: 'Login successful' })
+        const token = generateToken(user);
+
+        res.status(200).json({ message: 'Login successful', token: token })
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
@@ -46,7 +52,10 @@ app.post('/api/register', async (req, res) => {
     try {
         const user = new UserModel(req.body);
         await user.save();
-        res.json({ message: 'Created new user' });
+
+        const token = generateToken(user);
+
+        res.json({ message: 'Created new user', token: token });
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
     }
@@ -54,8 +63,12 @@ app.post('/api/register', async (req, res) => {
 
 
 //ANCHOR Get user
-app.get('/api/user/:id', async (req, res) => {
+app.get('/api/user/:id', authMiddleware, async (req, res) => {
     try {
+        if (req.user.id !== req.params.id) {
+            return res.status(403).json({ error: "Forbidden" });
+        }
+        
         const user = await UserModel.findById(req.params.id)
 
         if (!user) {
@@ -98,7 +111,7 @@ app.get('/api/service/:id', async (req, res) => {
 
 
 //ANCHOR Create service purchase
-app.post('/api/service-purchase', async (req, res) => {
+app.post('/api/service-purchase', authMiddleware, async (req, res) => {
     try {
         const { serviceId, userId } = req.body;
 
@@ -145,7 +158,7 @@ app.post('/api/service-purchase', async (req, res) => {
 
 
 //ANCHOR List service purchases
-app.get('/api/service-purchases', async (req, res) => {
+app.get('/api/service-purchases', authMiddleware, async (req, res) => {
     try {
         const purchases = await ServicePurchaseModel.find()
             .populate('service', 'name tokenCost')  // only return certain fields
@@ -158,7 +171,7 @@ app.get('/api/service-purchases', async (req, res) => {
 
 
 //ANCHOR Update service purchase
-app.put('/api/service-purchase/:id', async (req, res) => {
+app.put('/api/service-purchase/:id', authMiddleware, async (req, res) => {
     try {
         const updates = { status: req.body.status }
 
