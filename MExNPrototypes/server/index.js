@@ -1,3 +1,5 @@
+//ANCHOR Config
+
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -12,11 +14,15 @@ app.use(express.json())
 
 mongoose.connect(mongoUrl, {})
 
+//SECTION Endpoints
+
+//ANCHOR Default
 app.get('/', async (req, res) => {
     res.status(200).send("Connected to Nelson Disaster Response backend server MExN stack prototype")
 })
 
-//Login user
+
+//ANCHOR Login
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -34,7 +40,8 @@ app.post('/api/login', async (req, res) => {
     }
 })
 
-//Register new user
+
+//ANCHOR Register
 app.post('/api/register', async (req, res) => {
     try {
         const user = new UserModel(req.body);
@@ -45,11 +52,11 @@ app.post('/api/register', async (req, res) => {
     }
 })
 
-//Get account details
-app.get('/api/user', async (req, res) => {
+
+//ANCHOR Get user
+app.get('/api/user/:id', async (req, res) => {
     try {
-        const id = req.query.id
-        const user = await UserModel.findOne({_id: id})
+        const user = await UserModel.findById(req.params.id)
 
         if (!user) {
             return res.status(404).json({error: "User not found"})
@@ -62,133 +69,84 @@ app.get('/api/user', async (req, res) => {
     }
 })
 
-//Update account details
-app.put('/api/user', async (req, res) => {
+
+//ANCHOR List services
+app.get('/api/services', async (req, res) => {
     try {
-        const user = req.body
-        //STUB
-
-        console.log(user)
-        
-        throw new Error("API endpoint not implemented")
-
+        const services = await ServiceModel.find();
+        res.status(200).json(services);
     } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
-})
+});
 
-//Check authorisation
-app.get('/api/memberAuthorisation', async (req, res) => {
+
+//ANCHOR Get service
+app.get('/api/service/:id', async (req, res) => {
     try {
-        const id = req.query.id
-        //STUB
+        const service = await ServiceModel.findById(req.params.id);
 
-        console.log(id)
-        
-        throw new Error("API endpoint not implemented")
+        if (!service) {
+            return res.status(404).json({ error: 'Service not found' });
+        }
 
+        res.status(200).json(service);
     } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
-})
+});
 
-//Register new service
-app.post('/api/service', async (req, res) => {
+
+//ANCHOR Create service purchase
+app.post('/api/service-purchase', async (req, res) => {
     try {
-        const service = req.body
-        //STUB
-
-        console.log(service)
-        
-        throw new Error("API endpoint not implemented")
-
+        const purchase = new ServicePurchaseModel({
+            ...req.body,
+            date: new Date()
+        });
+        await purchase.save();
+        res.status(200).json({ message: 'Service purchased', purchase });
     } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
-})
+});
 
-//Acquire tokens
-app.post('/api/acquireToken', async (req, res) => {
+
+//ANCHOR List service purchases
+app.get('/api/service-purchases', async (req, res) => {
     try {
-        const id = req.body.id
-        //STUB
-
-        console.log(id)
-        
-        throw new Error("API endpoint not implemented")
-
+        const purchases = await ServicePurchaseModel.find();
+        res.status(200).json(purchases);
     } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
-})
+});
 
-//Get service list
-app.get('/api/allServices', async (req, res) => {
+
+//ANCHOR Update service purchase
+app.put('/api/service-purchase/:id', async (req, res) => {
     try {
-        //STUB
-        
-        throw new Error("API endpoint not implemented")
+        const updates = { status: req.body.status }
 
+        const purchase = await ServicePurchaseModel.findByIdAndUpdate(
+            req.params.id,
+            updates,
+            { new: true, runValidators: true }
+        );
+
+        if (!purchase) {
+            return res.status(404).json({ error: 'Service purchase not found' })
+        }
+
+        res.status(200).json({ message: 'Service purchase updated', purchase });
     } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
-})
+});
 
-//Get service info
-app.get('/api/service', async (req, res) => {
-    try {
-        const id = req.query.id
-        //STUB
+//!SECTION
 
-        console.log(id)
-        
-        throw new Error("API endpoint not implemented")
-
-    } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
-    }
-})
-
-//Purchase service
-app.post('/api/servicePurchase', async (req, res) => {
-    try {
-        const { serviceId, userId } = req.body;
-        //STUB
-
-        console.log(serviceId, userId)
-        
-        throw new Error("API endpoint not implemented")
-
-    } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
-    }
-})
-
-//Get pending transactions
-app.get('/api/allServicePurchases', async (req, res) => {
-    try {
-        //STUB
-        
-        throw new Error("API endpoint not implemented")
-
-    } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
-    }
-})
-
-//Change transaction status
-app.put('/api/servicePurchase', async (req, res) => {
-    try {
-        //STUB
-        const { id, status } = req.body;
-        
-        throw new Error("API endpoint not implemented")
-
-    } catch (err) {
-        res.status(400).json({ error: `Something went wrong: ${err.message}`})
-    }
-})
-
+//ANCHOR Listen
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
 })
