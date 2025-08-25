@@ -13,19 +13,21 @@ app.use(express.json())
 mongoose.connect(mongoUrl, {})
 
 app.get('/', async (req, res) => {
-    res.status(200).send("Connected to Nelson Disaster Response backend server MEAN stack prototype")
+    res.status(200).send("Connected to Nelson Disaster Response backend server MExN stack prototype")
 })
 
 //Login user
 app.post('/api/login', async (req, res) => {
     try {
         const { email, password } = req.body;
-        //STUB
 
-        console.log(email, password)
-        
-        throw new Error("API endpoint not implemented")
-        
+        const user = await UserModel.findOne({ email: username })
+
+        if (!user || !(await user.comparePassword(req.body.password))) {
+            return res.status(401).json({ error: 'Invalid credentials' })
+        }
+
+        return res.status(200).json({ message: 'Login successful' })
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
@@ -35,13 +37,9 @@ app.post('/api/login', async (req, res) => {
 //Register new user
 app.post('/api/register', async (req, res) => {
     try {
-        const { email, password } = req.body;
-        //STUB
-
-        console.log(email, password)
-        
-        throw new Error("API endpoint not implemented")
-
+        const user = new UserModel(req.body);
+        await user.save();
+        res.json({ message: 'Created new user' });
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
     }
@@ -51,11 +49,13 @@ app.post('/api/register', async (req, res) => {
 app.get('/api/user', async (req, res) => {
     try {
         const id = req.query.id
-        //STUB
+        const user = await UserModel.findOne({_id: id})
 
-        console.log(id)
-        
-        throw new Error("API endpoint not implemented")
+        if (!user) {
+            return res.status(404).json({error: "User not found"})
+        }
+
+        return res.status(200).json({ user: user })
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})

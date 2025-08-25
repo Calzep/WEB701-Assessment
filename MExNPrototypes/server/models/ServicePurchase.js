@@ -10,8 +10,8 @@ const ServicePurchaseSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        type: String,
-        required: Date
+        type: Date,
+        required: true
     },
     status: {
         type: String,
@@ -23,5 +23,5 @@ const ServicePurchaseSchema = new mongoose.Schema({
     }
 })
 
-const ServicePurchase = mongoose.model("User", ServicePurchaseSchema)
+const ServicePurchase = mongoose.model("ServicePurchase", ServicePurchaseSchema)
 module.exports = ServicePurchase
