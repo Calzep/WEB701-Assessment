@@ -67,7 +67,6 @@ app.post('/api/register', async (req, res) => {
 //ANCHOR Get user
 app.get('/api/user/:id', authenticationRequired, async (req, res) => {
     try {
-        console.log(req.params.id, req.user.id)
         if (req.user.id !== req.params.id) {
             return res.status(403).json({ error: "Forbidden" });
         }
@@ -214,7 +213,14 @@ app.post("/api/user/add-tokens", authenticationRequired, requiredRole("beneficia
         user.tokens += amount;
         await user.save();
 
-        res.status(200).json(user);
+        res.status(200).json({
+            id: user._id,
+            email: user.email,
+            role: user.userType,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            tokens: user.tokens
+        });
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }

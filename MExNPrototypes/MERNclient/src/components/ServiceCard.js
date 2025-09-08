@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function ServiceCard({ service, user }) {
-    console.log(user);
     const handlePurchase = async () => {
         if (!user || user.role != "beneficiary") {
             alert("You must be logged in as a beneficiary purchase a service");
