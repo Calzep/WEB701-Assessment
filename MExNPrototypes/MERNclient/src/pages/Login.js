@@ -18,7 +18,7 @@ export default function Login() {
             const data = await res.json();
             if (res.ok) {
                 setMessage("Login successful!");
-                localStorage.setItem("token, data.token");
+                localStorage.setItem("token", data.token);
             } else {
                 setMessage(`Login failed: ${data.error}`)
             }

@@ -37,7 +37,7 @@ app.post('/api/login', async (req, res) => {
 
         const user = await UserModel.findOne({ email: email })
 
-        if (!user || !(user.comparePassword(password))) {
+        if (!user || !(await user.comparePassword(password))) {
             return res.status(401).json({ error: 'Invalid credentials' })
         }
 
