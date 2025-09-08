@@ -6,7 +6,7 @@ export default function Register() {
         password: "",
         firstName: "",
         lastName: "",
-        userType: ""
+        userType: "beneficiary"
     });
     const [message, setMessage] = useState("");
 
@@ -49,7 +49,7 @@ export default function Register() {
                 </select><br />
                 <button type="submit">Register</button>
             </form>
-            <p>{message}</p>
+            <p style={{maxWidth: "675px"}}>{message}</p>
         </div>
     )
 }
