@@ -9,6 +9,7 @@ export default function Header() {
                 <Link to="/">Home</Link> |{" "}
                 <Link to="/login">Login</Link> |{" "}
                 <Link to="/Register">Register</Link> |{" "}
+                <Link to="/Services">Services</Link> |{" "}
             </nav>
         </header>
     );
