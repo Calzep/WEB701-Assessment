@@ -57,9 +57,7 @@ app.post('/api/register', async (req, res) => {
         const user = new UserModel(req.body);
         await user.save();
 
-        const token = JwtUtil.generateToken(user);
-
-        res.json({ message: 'Created new user', token: token });
+        res.json({ message: 'Created new user'});
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
     }

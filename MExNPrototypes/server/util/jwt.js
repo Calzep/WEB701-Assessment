@@ -3,7 +3,13 @@ const SECRET = "demosecretkey"; //Should not be stored in code in a real applica
 
 function generateToken(user) {
   return jwt.sign(
-    { id: user._id, email: user.email, role: user.userType },
+    { 
+      id: user._id, 
+      email: user.email, 
+      role: user.userType,
+      firstName: user.firstName,
+      lastName: user.lastName
+    },
     SECRET,
     { expiresIn: "1h" }
   );

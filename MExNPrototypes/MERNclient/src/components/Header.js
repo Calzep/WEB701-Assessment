@@ -2,14 +2,35 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+
+    let user = JSON.parse(localStorage.getItem('user') ?? null)
+    console.log(user);
+
+    const handleLogout = () => {
+        localStorage.clear();
+    }
+
     return (
         <header>
             <h1> Nelson Disaster Response React Prototype</h1>
             <nav>
-                <Link to="/">Home</Link> |{" "}
-                <Link to="/login">Login</Link> |{" "}
-                <Link to="/Register">Register</Link> |{" "}
-                <Link to="/Services">Services</Link> |{" "}
+                <div className="LeftNav">
+                    <Link to="/">Home</Link> |{" "}
+                    <Link to="/login">Login</Link> |{" "}
+                    <Link to="/Register">Register</Link> |{" "}
+                    <Link to="/Services">Services</Link> |{" "}
+                </div>
+                <div className="RightNav">
+                    {!user && (
+                        <p>Not logged in</p>
+                    )}
+                    {user != null && (
+                        <>
+                            <p>Logged in as {user.firstName} {user.lastName}</p>
+                            <Link to="/" onClick={handleLogout}>Logout</Link>
+                        </>
+                    )}
+                </div>
             </nav>
         </header>
     );
