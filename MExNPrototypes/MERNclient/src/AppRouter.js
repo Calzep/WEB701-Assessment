@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Services from "./pages/Services";
 import Account from "./pages/Account";
+import ServicePurchases from "./pages/ServicePurchase";
 
 export default function AppRouter({ user, onLogin, setUser }) {
   return (
@@ -15,6 +16,7 @@ export default function AppRouter({ user, onLogin, setUser }) {
       <Route path="/register" element={<Register user={user} />} />
       <Route path="/services" element={<Services user={user} />} />
       <Route path="/account" element={<Account user={user} setUser={setUser} />} />
+      <Route path="/purchases" element={<ServicePurchases user={user} />} />
     </Routes>
   );
 }

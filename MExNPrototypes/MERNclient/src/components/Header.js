@@ -10,7 +10,12 @@ export default function Header({ user, onLogout }) {
                     <Link to="/">Home</Link> |{" "}
                     <Link to="/login">Login</Link> |{" "}
                     <Link to="/Register">Register</Link> |{" "}
-                    <Link to="/Services">Services</Link> |{" "}
+                    <Link to="/Services">Services</Link>
+                    {user != null && user.role === "member" && (
+                        <>
+                             |{" "}<Link to="/purchases">Purchases</Link>
+                        </>
+                    )}
                 </div>
                 <div className="RightNav">
                     {!user && (
@@ -19,7 +24,7 @@ export default function Header({ user, onLogout }) {
                     {user != null && (
                         <>
                             <p>Logged in as {user.firstName} {user.lastName}</p>
-                            <Link to="/Account" >My Account</Link> |{" "}
+                            <Link to="/Account">My Account</Link> |{" "}
                             <Link to="/" onClick={onLogout}>Logout</Link>
                         </>
                     )}

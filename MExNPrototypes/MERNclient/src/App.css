@@ -17,6 +17,7 @@ body {
 nav {
   display: flex;
   flex-flow: row nowrap;
+  width: 800px;
 }
 
 .LeftNav, .RightNav {
@@ -28,4 +29,14 @@ nav {
 
 .RightNav {
   margin-left: auto;
+}
+
+.ServicePurchaseTable {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.ServicePurchaseTable th, .ServicePurchaseTable td {
+  border: 2px solid black;
+  padding: 5px 15px;
 }
