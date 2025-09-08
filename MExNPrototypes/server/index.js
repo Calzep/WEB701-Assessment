@@ -2,18 +2,23 @@
 
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const UserModel =  require("./models/User")
 const ServiceModel = require("./models/Service")
 const ServicePurchaseModel = require("./models/ServicePurchase")
 
+const JwtUtil = require("./util/jwt")
+
 const authenticationRequired = require("./middleware/authentication")
 const requiredRole = require("./middleware/authorisation")
 
-const app = express()
 const port = 7011
 const mongoUrl = "mongodb+srv://admin:admin@prototypeapps.bvtt3cc.mongodb.net/SharedMExNDatabase"
+
+const app = express()
 app.use(express.json())
+app.use(cors())
 
 mongoose.connect(mongoUrl, {})
 
@@ -36,7 +41,7 @@ app.post('/api/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid credentials' })
         }
 
-        const token = generateToken(user);
+        const token = JwtUtil.generateToken(user);
 
         res.status(200).json({ message: 'Login successful', token: token })
 
@@ -52,7 +57,7 @@ app.post('/api/register', async (req, res) => {
         const user = new UserModel(req.body);
         await user.save();
 
-        const token = generateToken(user);
+        const token = JwtUtil.generateToken(user);
 
         res.json({ message: 'Created new user', token: token });
     } catch (err) {
