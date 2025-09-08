@@ -67,6 +67,7 @@ app.post('/api/register', async (req, res) => {
 //ANCHOR Get user
 app.get('/api/user/:id', authenticationRequired, async (req, res) => {
     try {
+        console.log(req.params.id, req.user.id)
         if (req.user.id !== req.params.id) {
             return res.status(403).json({ error: "Forbidden" });
         }
@@ -77,7 +78,14 @@ app.get('/api/user/:id', authenticationRequired, async (req, res) => {
             return res.status(404).json({error: "User not found"})
         }
 
-        return res.status(200).json(user)
+        return res.status(200).json({
+            id: user._id,
+            email: user.email,
+            role: user.userType,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            tokens: user.tokens
+        })
 
     } catch (err) {
         res.status(400).json({ error: `Something went wrong: ${err.message}`})
@@ -115,7 +123,8 @@ app.get('/api/service/:id', async (req, res) => {
 //ANCHOR Create service purchase
 app.post('/api/service-purchase', authenticationRequired, requiredRole("beneficiary"), async (req, res) => {
     try {
-        const { serviceId, userId } = req.body;
+        const serviceId  = req.body.serviceId;
+        const userId = req.user.id
 
         // Get service
         const service = await ServiceModel.findById(serviceId);
@@ -192,6 +201,25 @@ app.put('/api/service-purchase/:id', authenticationRequired, requiredRole("membe
         res.status(400).json({ error: `Something went wrong: ${err.message}` });
     }
 });
+
+//ANCHOR Add tokens
+app.post("/api/user/add-tokens", authenticationRequired, requiredRole("beneficiary"), async (req, res) => {
+    try {
+        const user = await UserModel.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const amount = req.body.amount || 0;
+        user.tokens += amount;
+        await user.save();
+
+        res.status(200).json(user);
+    } catch (err) {
+        res.status(400).json({ error: `Something went wrong: ${err.message}` });
+    }
+});
+
 
 //!SECTION
 

@@ -12,7 +12,8 @@ export default function ServiceCard({ service, user }) {
             const res = await fetch("http://localhost:7011/api/service-purchase", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify({
                     serviceId: service._id,
@@ -35,10 +36,10 @@ export default function ServiceCard({ service, user }) {
             <h3>{service.name}</h3>
             <p>{service.description}</p>
             <p>Cost: {service.tokenCost} tokens</p>
-            {user.role === "beneficiary" && (
+            {user && user.role === "beneficiary" && (
                 <button onClick={handlePurchase}>Purchase</button>
             )}
-            {user.role === "member" && (
+            {user && user.role === "member" && (
                 <p>Login as a beneficiary to purchase</p>
             )}
             {!user && (

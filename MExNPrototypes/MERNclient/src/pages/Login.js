@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({onLogin}) {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,16 +20,14 @@ export default function Login() {
             const data = await res.json();
             if (res.ok) {
                 setMessage("Login successful!");
-                localStorage.setItem("token", data.token);
-                const decodedToken  = jwtDecode(data.token);
-                const user = { id: decodedToken.id, email: decodedToken.email, role: decodedToken.role };
-                localStorage.setItem("user", JSON.stringify(user));
+                onLogin(data.token);
                 navigate("/");
             } else {
                 setMessage(`Login failed: ${data.error}`)
             }
         } catch (err) {
             setMessage(`Login failed: Something went wrong, please try again.`)
+            console.error(err)
         }
     }
 
