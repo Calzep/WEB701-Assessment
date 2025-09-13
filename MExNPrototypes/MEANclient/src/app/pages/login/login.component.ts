@@ -28,7 +28,7 @@ export class LoginComponent {
         this.router.navigate(['/']); // Redirect to homepage after login
       },
       error: (err) => {
-        this.error = err.error?.message || 'Login failed.';
+        this.error = err.error.error || 'Login failed.';
         this.loading = false;
       }
     });

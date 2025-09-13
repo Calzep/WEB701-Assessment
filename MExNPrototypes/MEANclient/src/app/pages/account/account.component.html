@@ -1,9 +1,13 @@
 <div *ngIf="auth.user; else notLoggedIn" class="account-container">
   <h2>Account</h2>
   <p>Email: {{ auth.user.email }}</p>
+  <p>First name: {{ auth.user.firstName }}</p>
+  <p>Last name: {{ auth.user.lastName }}</p>
   <p>Role: {{ auth.user.role }}</p>
-  <p>Token balance: {{ balance }}</p>
-  <button (click)="addTokens()">Add 10 Tokens</button>
+  <div *ngIf="auth.isBeneficiary()">
+    <p>Token balance: {{ balance }}</p>
+    <button (click)="addTokens()">Add 10 Tokens</button>
+  </div>
 </div>
 
 <ng-template #notLoggedIn>

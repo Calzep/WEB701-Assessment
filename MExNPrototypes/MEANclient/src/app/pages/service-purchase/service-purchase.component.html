@@ -11,8 +11,8 @@
   </thead>
   <tbody>
     <tr *ngFor="let p of purchases">
-      <td>{{ p.userId }}</td>
-      <td>{{ p.serviceId }}</td>
+      <td>{{ p.user.email }}</td>
+      <td>{{ p.service.name }}</td>
       <td>{{ p.status }}</td>
       <td>
         <button *ngIf="p.status !== 'approved'" (click)="approvePurchase(p._id)">

@@ -22,19 +22,28 @@ export class AuthService {
   }
 
   private loadUserFromToken() {
-    const token = localStorage.getItem(this.tokenKey);
+    let token: string | null = null;
+
+    if (typeof window !== 'undefined') {
+      token = localStorage.getItem(this.tokenKey);
+    }
+
     if (token) {
       this.user = jwtDecode<User>(token);
     }
   }
 
   login(token: string) {
-    localStorage.setItem(this.tokenKey, token);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(this.tokenKey, token);
+    }
     this.loadUserFromToken();
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(this.tokenKey);
+    }
     this.user = null;
   }
 
@@ -51,6 +60,7 @@ export class AuthService {
   }
 
   getToken(): string | null {
+    if (typeof window === 'undefined') return null;
     return localStorage.getItem(this.tokenKey);
   }
 }

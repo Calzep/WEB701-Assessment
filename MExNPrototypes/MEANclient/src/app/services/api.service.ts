@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -8,8 +8,8 @@ import { AuthService } from './auth.service';
 })
 export class ApiService {
   private baseUrl = 'http://localhost:7011/api';
-
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  private http = inject(HttpClient);
+  constructor(private auth: AuthService) {}
 
   private getHeaders(): HttpHeaders {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -37,10 +37,10 @@ export class ApiService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(`${this.baseUrl}/auth/login`, { email, password });
+    return this.http.post(`${this.baseUrl}/login`, { email, password });
   }
 
   register(user: any) {
-    return this.http.post(`${this.baseUrl}/auth/register`, user);
+    return this.http.post(`${this.baseUrl}/register`, user);
   }
 }

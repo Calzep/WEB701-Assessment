@@ -23,6 +23,7 @@ app.use(cors())
 mongoose.connect(mongoUrl, {})
 
 //SECTION Endpoints
+//TODO Group into routes for actual application
 
 //ANCHOR Default
 app.get('/', async (req, res) => {

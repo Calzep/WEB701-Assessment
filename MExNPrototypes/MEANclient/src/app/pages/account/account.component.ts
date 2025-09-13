@@ -26,8 +26,9 @@ export class AccountComponent implements OnInit {
         }
       });
       const data = await res.json();
+      console.log(data)
       if (res.ok) {
-        this.balance = data.user.tokens;
+        this.balance = data.tokens;
       } else {
         console.error(data.error);
       }

@@ -12,6 +12,7 @@ export class ServicePurchaseComponent implements OnInit {
 
   async ngOnInit() {
     await this.fetchPurchases();
+    console.log(this.purchases)
   }
 
   async fetchPurchases() {

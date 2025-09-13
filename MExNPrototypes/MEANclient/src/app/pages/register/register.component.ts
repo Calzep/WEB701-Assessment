@@ -29,11 +29,11 @@ export class RegisterComponent {
       lastName: this.lastName,
       email: this.email,
       password: this.password,
-      role: this.role
+      userType: this.role
     }).subscribe({
       next: () => this.router.navigate(['/login']),
       error: (err) => {
-        this.error = err.error?.message || 'Registration failed.';
+        this.error = err.error.error || 'Registration failed.';
         this.loading = false;
       }
     });
