@@ -1,0 +1,3 @@
+<template>
+  <p>Welcome to the Nelson Disaster Response website</p>
+</template>
