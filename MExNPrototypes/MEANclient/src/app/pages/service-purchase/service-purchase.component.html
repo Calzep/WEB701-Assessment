@@ -1,0 +1,28 @@
+<h2>Service Purchases</h2>
+
+<table class="purchase-table" *ngIf="purchases.length > 0; else noPurchases">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Service</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of purchases">
+      <td>{{ p.userId }}</td>
+      <td>{{ p.serviceId }}</td>
+      <td>{{ p.status }}</td>
+      <td>
+        <button *ngIf="p.status !== 'approved'" (click)="approvePurchase(p._id)">
+          Approve
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noPurchases>
+  <p>No service purchases found.</p>
+</ng-template>

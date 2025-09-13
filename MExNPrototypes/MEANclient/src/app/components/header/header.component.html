@@ -1,0 +1,26 @@
+<nav class="nav">
+  <div class="left-nav">
+    <a routerLink="/">Home</a>
+    <a routerLink="/services">Services</a>
+
+    <!-- Only visible to logged-in users -->
+    <a *ngIf="auth.user" routerLink="/account">Account</a>
+
+    <!-- Only visible to members -->
+    <a *ngIf="auth.user?.role === 'member'" routerLink="/service-purchase">Service Purchases</a>
+  </div>
+
+  <div class="right-nav">
+    <!-- Show login/register if no user -->
+    <ng-container *ngIf="!auth.user; else loggedIn">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </ng-container>
+
+    <!-- Show logged in user + logout button -->
+    <ng-template #loggedIn>
+      <span>Logged in as {{ auth.user?.email }}</span>
+      <button (click)="logout()">Logout</button>
+    </ng-template>
+  </div>
+</nav>

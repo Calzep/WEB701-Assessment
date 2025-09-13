@@ -1,0 +1,11 @@
+<h2>Services</h2>
+<div *ngIf="services.length === 0">No services available.</div>
+<div *ngFor="let service of services" class="service-card">
+  <h3>{{ service.name }}</h3>
+  <p>{{ service.description }}</p>
+  <p>Cost: {{ service.tokenCost }} tokens</p>
+
+  <button *ngIf="auth.isBeneficiary()" (click)="purchase(service)">
+    Purchase
+  </button>
+</div>
