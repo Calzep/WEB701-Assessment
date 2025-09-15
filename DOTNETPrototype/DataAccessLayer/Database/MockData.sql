@@ -2,3 +2,4 @@ insert into [Service] ([Name], [Description], TokenCost, [type]) values ('Emerge
 insert into [Service] ([Name], [Description], TokenCost, [type]) values ('Family Meal Kit', 'Emergancy rations for a family of four', 5, 'food');
 
 select * from [Service];
+select * from [User];

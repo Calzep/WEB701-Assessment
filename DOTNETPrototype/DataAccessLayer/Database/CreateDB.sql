@@ -35,7 +35,7 @@ create table ServicePurchase (
 	[User]				int not null,
 	Date				DateTime not null,
 	Status				varchar(20) default 'pending',
-	TemporalTokenCost	int not null,
+	TemporalTokenCost	int null,
 	constraint PK__ServicePurchase primary key (Id),
 	constraint FK__ServicePurchase__Service
 		foreign key ([Service]) references [Service] (Id)

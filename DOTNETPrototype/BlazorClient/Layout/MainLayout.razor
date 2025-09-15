@@ -21,7 +21,8 @@
         <div class="right-nav">
             @if (Auth.IsLoggedIn)
             {
-                <button @onclick="Logout">Logout</button>
+                <p>Logged in as: @Auth.User.FirstName @Auth.User.LastName</p>
+                <a href="#" @onclick="Logout">Logout</a>
             }
             else
             {

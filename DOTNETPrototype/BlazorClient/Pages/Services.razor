@@ -1,5 +1,6 @@
 ﻿@page "/services"
 @inject HttpClient Http
+@inject IJSRuntime JS
 @using Models;
 @using BlazorClient.Services;
 
@@ -53,15 +54,26 @@ else
     private async Task Purchase(int serviceId)
     {
         var purchaseRequest = new { serviceId, userId = Auth.User?.Id };
-        var response = await Http.PostAsJsonAsync("api/ServicePurchase", purchaseRequest);
+        var request = new HttpRequestMessage(HttpMethod.Post, $"api/servicePurchase/")
+        {
+            Content = JsonContent.Create(new ServicePurchaseDTO{ Id = serviceId })
+        };
 
+        if (!string.IsNullOrEmpty(Auth.Jwt))
+        {
+            request.Headers.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Auth.Jwt);
+        }
+
+        var response = await Http.SendAsync(request);
         if (response.IsSuccessStatusCode)
         {
-            Console.WriteLine("Service purchased successfully.");
+            await JS.InvokeVoidAsync("alert", "Service purchased!");
         }
         else
         {
-            Console.WriteLine("Failed to purchase service.");
+            await JS.InvokeVoidAsync("alert", "Purchase failed");
+            Console.WriteLine($"Error creating purchase: {response}");
         }
     }
 }

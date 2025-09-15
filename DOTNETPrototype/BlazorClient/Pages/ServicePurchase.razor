@@ -56,7 +56,7 @@ else
     {
         if (Auth.User?.UserType == "member")
         {
-            purchases = await Http.GetFromJsonAsync<List<Models.ServicePurchaseModel>>("api/service-purchases");
+            await GetPurchases();
         }
         else
         {
@@ -66,10 +66,49 @@ else
 
     private async Task ApprovePurchase(int id)
     {
-        var result = await Http.PutAsJsonAsync($"api/service-purchase/{id}", new { status = "approved" });
-        if (result.IsSuccessStatusCode)
+        var request = new HttpRequestMessage(HttpMethod.Put, $"api/servicePurchase/{id}")
         {
-            purchases = await Http.GetFromJsonAsync<List<Models.ServicePurchaseModel>>("api/service-purchases");
+            Content = JsonContent.Create(new { status = "approved" })
+        };
+
+        if (!string.IsNullOrEmpty(Auth.Jwt))
+        {
+            request.Headers.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Auth.Jwt);
+        }
+
+        var response = await Http.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            await GetPurchases();
+        }
+        else
+        {
+            Console.WriteLine($"Error updating purchase: {response.StatusCode}");
+        }
+
+    }
+
+    private async Task GetPurchases()
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, "api/servicePurchase");
+
+        // Add JWT if present
+        if (!string.IsNullOrEmpty(Auth.Jwt))
+        {
+            request.Headers.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Auth.Jwt);
+        }
+
+        var response = await Http.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            purchases = await response.Content.ReadFromJsonAsync<List<ServicePurchaseModel>>() ?? new();
+        }
+        else
+        {
+            // handle error
+            Console.WriteLine($"Error fetching purchases: {response.StatusCode}");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@page "/register"
 @inject HttpClient Http
 @inject NavigationManager Nav
+@using Models;
 
 <h3>Register</h3>
 
@@ -8,17 +9,23 @@
 {
     <p>@message</p>
 }
-
+<input @bind="email" placeholder="Email" />
+<br />
+<br />
+<input @bind="password" type="password" placeholder="Password" />
+<br />
+<br />
 <input @bind="firstName" placeholder="First Name" />
 <br />
 <br />
 <input @bind="lastName" placeholder="Last Name" />
 <br />
 <br />
-<input @bind="email" placeholder="Email" />
-<br />
-<br />
-<input @bind="password" type="password" placeholder="Password" />
+<label>User Type:</label>
+<select @bind="userType">
+    <option value="beneficiary">Beneficiary</option>
+    <option value="member">Member</option>
+</select>
 <br />
 <br />
 <button @onclick="RegisterUser">Register</button>
@@ -28,27 +35,27 @@
     private string lastName = "";
     private string email = "";
     private string password = "";
+    private string userType = "beneficary";
     private string? message;
 
     private async Task RegisterUser()
     {
-        var response = await Http.PostAsJsonAsync("api/user/register", new
+        var response = await Http.PostAsJsonAsync("api/user/register", new UserModel
         {
+            Email = email,
             FirstName = firstName,
             LastName = lastName,
-            Email = email,
-            Password = password
+            Password = password,
+            UserType = userType,
         });
 
         if (response.IsSuccessStatusCode)
         {
-            message = "Account created successfully! Redirecting to login...";
-            await Task.Delay(2000);
-            Nav.NavigateTo("/login");
+            message = "Account created successfully!";
         }
         else
         {
-            message = "Registration failed. Please check your details.";
+            message = response.ToString();
         }
     }
 }

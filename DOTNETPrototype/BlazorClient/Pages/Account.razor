@@ -35,11 +35,23 @@ else
 
     private async Task AddTokens()
     {
-        var result = await Http.PostAsJsonAsync("api/user/add-tokens", new { amount = 10 });
-        if (result.IsSuccessStatusCode)
+        var request = new HttpRequestMessage(HttpMethod.Post, "api/user/add-tokens")
         {
-            var updatedUser = await result.Content.ReadFromJsonAsync<UserModel>();
+            Content = JsonContent.Create(new TokenRequestDTO { Amount = 10 })
+        };
+        request.Headers.Authorization =
+            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Auth.Jwt);
+
+        var response = await Http.SendAsync(request);
+
+        if (response.IsSuccessStatusCode)
+        {
+            var updatedUser = await response.Content.ReadFromJsonAsync<UserModel>();
             balance = updatedUser?.Tokens ?? balance;
+        }
+        else
+        {
+            Console.WriteLine("Failed to add tokens");
         }
     }
 }

@@ -12,7 +12,7 @@ public partial class ServicePurchaseModel
 
     public string? Status { get; set; }
 
-    public int TemporalTokenCost { get; set; }
+    public int? TemporalTokenCost { get; set; }
 
     public virtual ServiceModel ServiceNavigation { get; set; } = null!;
 

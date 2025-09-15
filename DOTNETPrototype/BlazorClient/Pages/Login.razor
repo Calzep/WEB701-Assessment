@@ -27,20 +27,20 @@
 
     private async Task LoginUser()
     {
-        var response = await Http.PostAsJsonAsync("api/user/login", new { Email = email, Password = password });
+        var response = await Http.PostAsJsonAsync("api/user/login", new LoginDTO { Email = email, Password = password });
 
         if (response.IsSuccessStatusCode)
         {
-            var user = await response.Content.ReadFromJsonAsync<UserModel>();
-            if (user is not null)
+            var res = await response.Content.ReadFromJsonAsync<LoginResultDTO>();
             {
-                Auth.Login(user);
+                Auth.Login(res.User, res.Token);
                 Nav.NavigateTo("/");
             }
         }
         else
         {
             error = "Invalid email or password.";
+            Console.WriteLine(response);
         }
     }
 }
