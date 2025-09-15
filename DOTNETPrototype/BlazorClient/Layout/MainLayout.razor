@@ -1,0 +1,45 @@
+﻿@inherits LayoutComponentBase
+@inject AuthState Auth
+@inject NavigationManager Nav
+@using BlazorClient.Services;
+
+<div class="page">
+    <h1>Nelson Disaster Response .NET Blazor Prototype</h1>
+    <nav class="nav">
+        <div class="left-nav">
+            <a href="/">Home</a>
+            <a href="/services">Services</a>
+            @if (Auth.IsLoggedIn)
+            {
+                <a href="/account">Account</a>
+                @if (Auth.User?.UserType == "member")
+                {
+                    <a href="/service-purchase">Service Purchases</a>
+                }
+            }
+        </div>
+        <div class="right-nav">
+            @if (Auth.IsLoggedIn)
+            {
+                <button @onclick="Logout">Logout</button>
+            }
+            else
+            {
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            }
+        </div>
+    </nav>
+
+    <main>
+        @Body
+    </main>
+</div>
+
+@code {
+    private void Logout()
+    {
+        Auth.Logout();
+        Nav.NavigateTo("/login");
+    }
+}

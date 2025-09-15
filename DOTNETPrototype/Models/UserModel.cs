@@ -1,6 +1,6 @@
 ﻿namespace Models;
 
-public partial class User
+public partial class UserModel
 {
     public int Id { get; set; }
 
@@ -16,7 +16,7 @@ public partial class User
 
     public int Tokens { get; set; }
 
-    public virtual ICollection<ServicePurchase> ServicePurchases { get; set; } = new List<ServicePurchase>();
+    public virtual ICollection<ServicePurchaseModel> ServicePurchases { get; set; } = new List<ServicePurchaseModel>();
 
-    public virtual ICollection<Service> Services { get; set; } = new List<Service>();
+    public virtual ICollection<ServiceModel> Services { get; set; } = new List<ServiceModel>();
 }

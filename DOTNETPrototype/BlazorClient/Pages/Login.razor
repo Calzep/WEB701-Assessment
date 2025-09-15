@@ -1,0 +1,46 @@
+﻿@page "/login"
+@inject AuthState Auth
+@inject HttpClient Http
+@inject NavigationManager Nav
+@using BlazorClient.Services;
+@using Models;
+
+<h3>Login</h3>
+
+@if (!string.IsNullOrEmpty(error))
+{
+    <p style="color:red">@error</p>
+}
+
+<input @bind="email" placeholder="Email" />
+<br />
+<br />
+<input @bind="password" type="password" placeholder="Password" />
+<br />
+<br />
+<button @onclick="LoginUser">Login</button>
+
+@code {
+    private string email = "";
+    private string password = "";
+    private string? error;
+
+    private async Task LoginUser()
+    {
+        var response = await Http.PostAsJsonAsync("api/user/login", new { Email = email, Password = password });
+
+        if (response.IsSuccessStatusCode)
+        {
+            var user = await response.Content.ReadFromJsonAsync<UserModel>();
+            if (user is not null)
+            {
+                Auth.Login(user);
+                Nav.NavigateTo("/");
+            }
+        }
+        else
+        {
+            error = "Invalid email or password.";
+        }
+    }
+}

@@ -1,6 +1,6 @@
 ﻿namespace Models;
 
-public partial class ServicePurchase
+public partial class ServicePurchaseModel
 {
     public int Id { get; set; }
 
@@ -14,7 +14,7 @@ public partial class ServicePurchase
 
     public int TemporalTokenCost { get; set; }
 
-    public virtual Service ServiceNavigation { get; set; } = null!;
+    public virtual ServiceModel ServiceNavigation { get; set; } = null!;
 
-    public virtual User UserNavigation { get; set; } = null!;
+    public virtual UserModel UserNavigation { get; set; } = null!;
 }

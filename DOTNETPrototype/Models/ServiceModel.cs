@@ -1,6 +1,6 @@
 ﻿namespace Models;
 
-public partial class Service
+public partial class ServiceModel
 {
     public int Id { get; set; }
 
@@ -16,7 +16,7 @@ public partial class Service
 
     public string Type { get; set; } = null!;
 
-    public virtual User? RegisteredByNavigation { get; set; }
+    public virtual UserModel? RegisteredByNavigation { get; set; }
 
-    public virtual ICollection<ServicePurchase> ServicePurchases { get; set; } = new List<ServicePurchase>();
+    public virtual ICollection<ServicePurchaseModel> ServicePurchases { get; set; } = new List<ServicePurchaseModel>();
 }

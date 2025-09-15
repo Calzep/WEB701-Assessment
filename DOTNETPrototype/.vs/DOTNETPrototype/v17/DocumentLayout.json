@@ -3,8 +3,87 @@
   "WorkspaceRootPath": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\modelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\modelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\database\\createdb.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\database\\createdb.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_CALZE_WORKSPACE_WEB701_ASSESSMENT_DOTNETPROTOTYPE_DATAACCESSLAYER_DATABASE_WEB701DOTNETDB.MDF/True/SqlTable/dbo.User.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\restapi\\controllers\\servicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|solutionrelative:restapi\\controllers\\servicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\restapi\\controllers\\servicepurchasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|solutionrelative:restapi\\controllers\\servicepurchasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\restapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D97BEE37-45DA-41EA-B0DF-1819C5ADB2D6}|RestApi\\RestApi.csproj|solutionrelative:restapi\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\pages\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\pages\\services.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\layout\\mainlayout.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\wwwroot\\css\\app.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\pages\\account.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\pages\\account.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92F45B4C-1C51-44D0-81AB-B93121CFDF19}|Models\\Models.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92F45B4C-1C51-44D0-81AB-B93121CFDF19}|Models\\Models.csproj|solutionrelative:models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\blazorclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E22AD956-7AF7-40B6-B273-FD5E50D52A02}|BlazorClient\\BlazorClient.csproj|solutionrelative:blazorclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
+      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\database\\mockdata.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\calze\\workspace\\web701-assessment\\dotnetprototype\\dataaccesslayer\\database\\createdb.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{E6FA48AC-48A8-4CD1-83BF-ACBAB9284234}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\database\\createdb.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +93,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 383,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,15 +113,231 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateDB.sql ",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\Database\\CreateDB.sql",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Database\\CreateDB.sql",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\Database\\CreateDB.sql",
+              "RelativeToolTip": "DataAccessLayer\\Database\\CreateDB.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-15T01:04:41.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ModelContext.cs",
-              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\ModelContext.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ModelContext.cs",
-              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\ModelContext.cs",
-              "RelativeToolTip": "DataAccessLayer\\ModelContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Title": "MockData.sql ",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\Database\\MockData.sql",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Database\\MockData.sql",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\Database\\MockData.sql",
+              "RelativeToolTip": "DataAccessLayer\\Database\\MockData.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-15T01:02:55.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dbo.User [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_LocalDB__MSSQLLocalDB/C__USERS_CALZE_WORKSPACE_WEB701_ASSESSMENT_DOTNETPROTOTYPE_DATAACCESSLAYER_DATABASE_WEB701DOTNETDB.MDF/True/SqlTable/dbo.User.sql",
+              "ToolTip": "dbo.User [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-09-15T01:02:05.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ServiceController.cs",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\ServiceController.cs",
+              "RelativeDocumentMoniker": "RestApi\\Controllers\\ServiceController.cs",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\ServiceController.cs",
+              "RelativeToolTip": "RestApi\\Controllers\\ServiceController.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-14T01:35:42.531Z",
+              "WhenOpened": "2025-09-15T01:00:41.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ServicePurchaseController.cs",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\ServicePurchaseController.cs",
+              "RelativeDocumentMoniker": "RestApi\\Controllers\\ServicePurchaseController.cs",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\ServicePurchaseController.cs",
+              "RelativeToolTip": "RestApi\\Controllers\\ServicePurchaseController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T01:00:34.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Services.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Services.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Pages\\Services.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Services.razor",
+              "RelativeToolTip": "BlazorClient\\Pages\\Services.razor",
+              "ViewState": "AgIAABMAAAAAAAAAAAAqwDMAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:56:43.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainLayout.razor.css",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Layout\\MainLayout.razor.css",
+              "RelativeDocumentMoniker": "BlazorClient\\Layout\\MainLayout.razor.css",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Layout\\MainLayout.razor.css",
+              "RelativeToolTip": "BlazorClient\\Layout\\MainLayout.razor.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-15T00:40:07.521Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "app.css",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\wwwroot\\css\\app.css",
+              "RelativeDocumentMoniker": "BlazorClient\\wwwroot\\css\\app.css",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\wwwroot\\css\\app.css",
+              "RelativeToolTip": "BlazorClient\\wwwroot\\css\\app.css",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-15T00:38:43.929Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Home.razor",
+              "RelativeToolTip": "BlazorClient\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:37:28.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "BlazorClient\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:37:12.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "BlazorClient\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Properties\\launchSettings.json",
+              "RelativeToolTip": "BlazorClient\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-09-15T00:35:23.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Account.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Account.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Pages\\Account.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Account.razor",
+              "RelativeToolTip": "BlazorClient\\Pages\\Account.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:33:17.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "RestApi\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\RestApi\\Controllers\\UserController.cs",
+              "RelativeToolTip": "RestApi\\Controllers\\UserController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T00:31:58.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\Models\\UserModel.cs",
+              "RelativeDocumentMoniker": "Models\\UserModel.cs",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\Models\\UserModel.cs",
+              "RelativeToolTip": "Models\\UserModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T00:31:51.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\App.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\App.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\App.razor",
+              "RelativeToolTip": "BlazorClient\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:31:19.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Program.cs",
+              "RelativeDocumentMoniker": "BlazorClient\\Program.cs",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Program.cs",
+              "RelativeToolTip": "BlazorClient\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-15T00:30:33.663Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Register.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Pages\\Register.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Register.razor",
+              "RelativeToolTip": "BlazorClient\\Pages\\Register.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:29:55.363Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "BlazorClient\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\BlazorClient\\Pages\\Login.razor",
+              "RelativeToolTip": "BlazorClient\\Pages\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-15T00:29:13.617Z",
               "EditorCaption": ""
             }
           ]

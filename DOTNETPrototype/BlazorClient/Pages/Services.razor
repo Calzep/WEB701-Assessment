@@ -1,0 +1,55 @@
+﻿@page "/services"
+@inject HttpClient Http
+@using Models;
+@using BlazorClient.Services;
+
+<h3>Services</h3>
+
+@if (services is null)
+{
+    <p>Loading services...</p>
+}
+else if (!services.Any())
+{
+    <p>No services available at this time.</p>
+}
+else
+{
+    <ul>
+        @foreach (var service in services)
+        {
+            <li>
+                <strong>@service.Name</strong> - @service.TokenCost tokens
+                @if (Auth.IsLoggedIn && Auth.User?.UserType == "beneficiary")
+                {
+                    <button @onclick="() => Purchase(service.Id)">Purchase</button>
+                }
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Inject] public AuthState Auth { get; set; } = default!;
+    private List<ServiceModel>? services;
+
+    protected override async Task OnInitializedAsync()
+    {
+        services = await Http.GetFromJsonAsync<List<ServiceModel>>("api/Service");
+    }
+
+    private async Task Purchase(int serviceId)
+    {
+        var purchaseRequest = new { serviceId, userId = Auth.User?.Id };
+        var response = await Http.PostAsJsonAsync("api/ServicePurchase", purchaseRequest);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Service purchased successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Failed to purchase service.");
+        }
+    }
+}

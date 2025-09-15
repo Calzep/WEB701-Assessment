@@ -1,0 +1,54 @@
+﻿@page "/register"
+@inject HttpClient Http
+@inject NavigationManager Nav
+
+<h3>Register</h3>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}
+
+<input @bind="firstName" placeholder="First Name" />
+<br />
+<br />
+<input @bind="lastName" placeholder="Last Name" />
+<br />
+<br />
+<input @bind="email" placeholder="Email" />
+<br />
+<br />
+<input @bind="password" type="password" placeholder="Password" />
+<br />
+<br />
+<button @onclick="RegisterUser">Register</button>
+
+@code {
+    private string firstName = "";
+    private string lastName = "";
+    private string email = "";
+    private string password = "";
+    private string? message;
+
+    private async Task RegisterUser()
+    {
+        var response = await Http.PostAsJsonAsync("api/user/register", new
+        {
+            FirstName = firstName,
+            LastName = lastName,
+            Email = email,
+            Password = password
+        });
+
+        if (response.IsSuccessStatusCode)
+        {
+            message = "Account created successfully! Redirecting to login...";
+            await Task.Delay(2000);
+            Nav.NavigateTo("/login");
+        }
+        else
+        {
+            message = "Registration failed. Please check your details.";
+        }
+    }
+}

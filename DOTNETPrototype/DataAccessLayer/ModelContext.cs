@@ -14,18 +14,15 @@ public partial class ModelContext : DbContext
     {
     }
 
-    public virtual DbSet<Service> Services { get; set; }
+    public virtual DbSet<ServiceModel> Services { get; set; }
 
-    public virtual DbSet<ServicePurchase> ServicePurchases { get; set; }
+    public virtual DbSet<ServicePurchaseModel> ServicePurchases { get; set; }
 
-    public virtual DbSet<User> Users { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\calze\\workspace\\WEB701-Assessment\\DOTNETPrototype\\DataAccessLayer\\Database\\WEB701DotNetDB.mdf;Integrated Security=True");
+    public virtual DbSet<UserModel> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Service>(entity =>
+        modelBuilder.Entity<ServiceModel>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Service");
 
@@ -50,7 +47,7 @@ public partial class ModelContext : DbContext
                 .HasConstraintName("FK__Service__User");
         });
 
-        modelBuilder.Entity<ServicePurchase>(entity =>
+        modelBuilder.Entity<ServicePurchaseModel>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__ServicePurchase");
 
@@ -71,7 +68,7 @@ public partial class ModelContext : DbContext
                 .HasConstraintName("FK__ServicePurchase_User");
         });
 
-        modelBuilder.Entity<User>(entity =>
+        modelBuilder.Entity<UserModel>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__User");
 

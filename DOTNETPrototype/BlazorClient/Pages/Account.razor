@@ -1,0 +1,45 @@
+﻿@page "/account"
+@inject AuthState Auth
+@inject HttpClient Http
+@using BlazorClient.Services;
+@using Models;
+
+@if (!Auth.IsLoggedIn)
+{
+    <p>Please log in to view your account.</p>
+}
+else
+{
+    <h3>Account</h3>
+    <p>Email: @Auth.User!.Email</p>
+    <p>Role: @Auth.User.UserType</p>
+
+    @if (Auth.User.UserType == "beneficiary")
+    {
+        <p>Token balance: @balance</p>
+        <button @onclick="AddTokens">Add 10 Tokens</button>
+    }
+}
+
+@code {
+    private int balance;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Auth.IsLoggedIn)
+        {
+            var user = await Http.GetFromJsonAsync<UserModel>($"api/user/{Auth.User!.Id}");
+            balance = user?.Tokens ?? 0;
+        }
+    }
+
+    private async Task AddTokens()
+    {
+        var result = await Http.PostAsJsonAsync("api/user/add-tokens", new { amount = 10 });
+        if (result.IsSuccessStatusCode)
+        {
+            var updatedUser = await result.Content.ReadFromJsonAsync<UserModel>();
+            balance = updatedUser?.Tokens ?? balance;
+        }
+    }
+}
