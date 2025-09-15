@@ -68,6 +68,18 @@ func App() *buffalo.App {
 		app.GET("/", HomeHandler)
 
 		app.POST("/login", UserLogin)
+		app.POST("/register", UserRegister)
+
+		api := app.Group("/api")
+
+		api.Use(AuthMiddleware)
+
+		api.GET("/me", func(c buffalo.Context) error {
+			userID := c.Value("user_id")
+			return c.Render(200, r.JSON(map[string]interface{}{
+				"user_id": userID,
+			}))
+		})
 
 		app.ServeFiles("/", http.FS(public.FS())) // serve files from the public directory
 	})
