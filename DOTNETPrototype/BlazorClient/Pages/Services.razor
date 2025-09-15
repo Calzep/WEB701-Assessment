@@ -15,18 +15,18 @@ else if (!services.Any())
 }
 else
 {
-    <ul>
-        @foreach (var service in services)
-        {
-            <li>
-                <strong>@service.Name</strong> - @service.TokenCost tokens
-                @if (Auth.IsLoggedIn && Auth.User?.UserType == "beneficiary")
-                {
-                    <button @onclick="() => Purchase(service.Id)">Purchase</button>
-                }
-            </li>
-        }
-    </ul>
+    @foreach (var service in services)
+    {
+        <div>
+            <h3>@service.Name</h3>
+            <p>@service.Description</p>
+            <p>Token cost: @service.TokenCost</p>
+            @if (Auth.IsLoggedIn && Auth.User?.UserType == "beneficiary")
+            {
+                <button @onclick="() => Purchase(service.Id)">Purchase</button>
+            }
+        </div>
+    }
 }
 
 @code {
@@ -35,7 +35,19 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        services = await Http.GetFromJsonAsync<List<ServiceModel>>("api/Service");
+        var response = await Http.GetAsync("api/service");
+        var raw = await response.Content.ReadAsStringAsync();
+        Console.WriteLine(raw);
+
+        if (response.IsSuccessStatusCode)
+        {
+            services = System.Text.Json.JsonSerializer.Deserialize<List<ServiceModel>>(raw);
+        }
+        else
+        {
+            Console.WriteLine($"API returned {response.StatusCode}");
+        }
+
     }
 
     private async Task Purchase(int serviceId)
