@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>Buffalo - GOPrototype</title>
-    <%= stylesheetTag("application.css") %>
-    <meta name="csrf-param" content="authenticity_token" />
-    <meta name="csrf-token" content="<%= authenticity_token %>" />
-    <link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
+    <title>NDR go buffalo prototype</title>
   </head>
   <body>
-
-    <div class="container">
-      <%= partial("flash.html") %>
+    <h1>Nelson Disaster Response GO Buffalo Prototype</h1>
+    <%= partial("partials/header.plush.html") %>
+    <main>
       <%= yield %>
-    </div>
-
-    <%= javascriptTag("application.js") %>
+    </main>
   </body>
 </html>

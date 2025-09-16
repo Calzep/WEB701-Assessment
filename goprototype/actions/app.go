@@ -65,10 +65,16 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
+		//Page Router
 		app.GET("/", HomeHandler)
+		app.GET("/register", RegisterHandler)
+		app.GET("/login", LoginHandler)
+		app.GET("/account", AccountHandler)
 
+		//API Endpoints
 		app.POST("/login", UserLogin)
 		app.POST("/register", UserRegister)
+		app.POST("/logout", UserLogout)
 
 		api := app.Group("/api")
 

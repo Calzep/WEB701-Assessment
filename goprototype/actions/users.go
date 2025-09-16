@@ -3,12 +3,26 @@ package actions
 import (
 	"errors"
 	"goprototype/models"
+	"net/http"
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop/v6"
 )
 
-// UsersLogin handles POST /login
+func LoginHandler(c buffalo.Context) error {
+	return c.Render(http.StatusOK, r.HTML("pages/login.html"))
+}
+
+func RegisterHandler(c buffalo.Context) error {
+	return c.Render(http.StatusOK, r.HTML("pages/register.html"))
+}
+
+func UserLogout(c buffalo.Context) error {
+	// Clear session
+	c.Session().Clear()
+	return c.Redirect(302, "/")
+}
+
 func UserLogin(c buffalo.Context) error {
 	db, ok := c.Value("tx").(*pop.Connection)
 	if !ok {
