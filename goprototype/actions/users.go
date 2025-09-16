@@ -43,6 +43,8 @@ func UserLogin(c buffalo.Context) error {
 		return c.Error(500, err)
 	}
 
+	c.Set("current_user", user)
+
 	return c.Render(200, r.JSON(map[string]interface{}{
 		"user":  user,
 		"token": token,
