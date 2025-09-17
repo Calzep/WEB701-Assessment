@@ -1,0 +1,18 @@
+<nav>
+  <div class="left-nav">
+    <a href="/">Home</a>
+    <% if (current_user) { %>
+      <a href="/account">Account</a>
+    <% } %>
+  </div>
+  <div class="right-nav">
+    <% if (current_user) { %>
+      <p>logged in as <%= current_user.Email %></p>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } %>
+  </div>
+</nav>
+<hr>

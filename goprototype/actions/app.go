@@ -65,6 +65,8 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
+		app.Use(SetCurrentUser)
+
 		//Page Router
 		app.GET("/", HomeHandler)
 		app.GET("/register", RegisterHandler)

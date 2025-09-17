@@ -7,7 +7,7 @@ import (
 	"github.com/gobuffalo/buffalo"
 )
 
-//go:embed *.plush.html partials/_header.plush.html
+//go:embed *.plush.html
 var files embed.FS
 
 func FS() fs.FS {
