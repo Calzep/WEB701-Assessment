@@ -59,7 +59,7 @@ export default function Account({ user, setUser }) {
             <p>Email: {user.email}</p>
             <p>First name: {user.firstName}</p>
             <p>Last name: {user.lastName}</p>
-            {user != null && user.role === "member" && (
+            {user != null && user.role === "beneficiary" && (
                 <>
                     <p>Token balance: {balance}</p>
                     <button onClick={addTokens}>Add 10 Tokens</button>
