@@ -2,25 +2,31 @@
   <div class="register-container">
     <h2>Register</h2>
     <form @submit.prevent="onSubmit">
-      <label>First Name</label>
-      <input type="text" v-model="firstName" required />
-      <br /><br />
-      <label>Last Name</label>
-      <input type="text" v-model="lastName" required />
-      <br /><br />
-      <label>Email</label>
-      <input type="email" v-model="email" required />
-      <br /><br />
-      <label>Password</label>
-      <input type="password" v-model="password" required />
-      <br /><br />
-      <label>Role</label>
-      <select v-model="role">
-        <option value="beneficiary">Beneficiary</option>
-        <option value="member">Member</option>
-      </select>
-      <br /><br />
-      <button type="submit" :disabled="loading">Register</button>
+      <div class="form-row">
+        <label>First Name</label>
+        <input type="text" v-model="firstName" required />
+      </div>
+      <div class="form-row">
+        <label>Last Name</label>
+        <input type="text" v-model="lastName" required />
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" v-model="email" required />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" v-model="password" required />
+      </div>
+      <div class="form-row">
+        <label>Role</label>
+        <select v-model="role">
+          <option value="beneficiary">Beneficiary</option>
+          <option value="member">Member</option>
+        </select>
+      </div>
+      <br />
+      <button class="default-button" type="submit" :disabled="loading">Register</button>
     </form>
 
     <p v-if="error" style="color: red">{{ error }}</p>
@@ -75,3 +81,25 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .register-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .register-container form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+  }
+</style>
