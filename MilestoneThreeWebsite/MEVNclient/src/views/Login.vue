@@ -2,13 +2,16 @@
   <div class="login-container">
     <h2>Login</h2>
     <form @submit.prevent="onSubmit">
-      <label>Email</label>
-      <input type="email" v-model="email" required />
-      <br /><br />
-      <label>Password</label>
-      <input type="password" v-model="password" required />
-      <br /><br />
-      <button type="submit" :disabled="loading">Login</button>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" v-model="email" required /> 
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" v-model="password" required />
+      </div>
+
+      <button class="default-button" type="submit" :disabled="loading">Login</button>
     </form>
 
     <p v-if="error" style="color: red">{{ error }}</p>
@@ -56,3 +59,25 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+  .login-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .login-container form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+  }
+</style>
