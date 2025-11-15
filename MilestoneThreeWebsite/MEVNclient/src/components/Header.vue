@@ -39,6 +39,10 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  padding: 10px;
+  background-color: #ffffffff;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .left-nav,

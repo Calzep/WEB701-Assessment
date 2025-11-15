@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <h1>Nelson Disaster Response Vue Prototype</h1>
+    <div class="top-row">
+      <img src="./assets/NDR_logo.png"  />
+      <h1>Nelson Disaster Response</h1>
+    </div>
     <HeaderComponent />
     <router-view />
   </div>
@@ -19,9 +22,21 @@ export default {
 
 <style>
 /* global styles */
+body {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+.top-row {
+  padding-left: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 20px;
+  background-color: #dadadaff;
 }
 </style>
