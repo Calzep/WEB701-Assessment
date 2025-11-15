@@ -93,6 +93,47 @@ app.get('/api/user/:id', authenticationRequired, async (req, res) => {
 })
 
 
+//ANCHOR Update user
+app.put('/api/user/:id', authenticationRequired, async (req, res) => {
+    try {
+        // Users can only update their own account
+        if (req.user.id !== req.params.id) {
+            return res.status(403).json({ error: "Forbidden" });
+        }
+
+        const user = await UserModel.findById(req.params.id);
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const { firstName, lastName, password } = req.body;
+
+        //Use last known value for any empty fields
+        if (firstName !== undefined && firstName !== "" && firstName !== null) user.firstName = firstName;
+        if (lastName !== undefined && lastName !== "" && lastName !== null) user.lastName = lastName;
+        if (password !== undefined && password !== "" && password !== null) user.password = password; 
+
+        await user.save();
+
+        return res.status(200).json({
+            message: "User updated successfully",
+            user: {
+                id: user._id,
+                email: user.email,
+                role: user.userType,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                tokens: user.tokens
+            }
+        });
+
+    } catch (err) {
+        return res.status(400).json({ error: `Something went wrong: ${err.message}` });
+    }
+});
+
+
 //ANCHOR List services
 app.get('/api/services', async (req, res) => {
     try {
