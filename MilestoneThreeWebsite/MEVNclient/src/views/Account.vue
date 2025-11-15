@@ -1,15 +1,39 @@
 <template>
   <div class="account-container">
     <template v-if="user">
-      <h2>Account</h2>
-      <p>Email: {{ user.email }}</p>
-      <p>First name: {{ user.firstName }}</p>
-      <p>Last name: {{ user.lastName }}</p>
-      <p>Role: {{ user.role }}</p>
-
-      <div v-if="user.role === 'beneficiary'">
-        <p>Token balance: {{ balance }}</p>
-        <button @click="addTokens">Add 10 Tokens</button>
+      <h2>Your Account Details</h2>
+      <div class="form-row">
+        <p>Email: {{ user.email }}</p>
+      </div>
+      <div class="form-row">
+        <p>Role: {{ user.role }}</p>
+      </div>
+      <br />
+      <form @submit.prevent="onSubmit">
+        <div class="form-row">
+          <label>First name</label>
+          <input type="text" v-model="firstName" required />
+        </div>
+        <div class="form-row">
+          <label>Last name</label>
+          <input type="text" v-model="lastName" required />
+        </div>
+        <div class="form-row">
+          <label>Password (Leave blank to retain current)</label>
+          <input type="password" v-model="password" required />
+        </div>
+        <div class="form-buttons">
+          <button class="default-button">Close</button>
+          <button class="highlight-button">Update</button>
+        </div>
+      </form>
+      
+      <div class="token-balance-container" v-if="user.role === 'beneficiary'">
+        <h3>Token Balance</h3>
+        <div class="token-balance-row">
+          <p>Your tokens: {{ balance }}</p>
+          <button class="highlight-button" @click="addTokens">Add 10 Tokens</button>
+        </div>
       </div>
     </template>
 
@@ -27,6 +51,9 @@ export default {
   setup() {
     const user = ref(null);
     const balance = ref(0);
+    const firstName = ref("");
+    const lastName = ref("");
+    const password = ref("");
 
     const fetchUser = async () => {
       try {
@@ -34,16 +61,53 @@ export default {
         if (!token) return;
 
         const payload = JSON.parse(atob(token.split(".")[1]));
-        user.value = payload;
 
         const res = await fetch(`http://localhost:7011/api/user/${payload.id}`, {
           headers: { "Authorization": `Bearer ${token}` },
         });
+
         if (!res.ok) throw new Error("Failed to fetch user");
         const data = await res.json();
+        user.value = data;
+        firstName.value = data.firstName;
+        lastName.value = data.lastName;
+        password.value = "";
         balance.value = data.tokens;
       } catch (err) {
         console.error(err);
+      }
+    };
+
+    const onSubmit = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch(
+          `http://localhost:7011/api/user/${user.value.id}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              firstName: firstName.value,
+              lastName: lastName.value,
+              password: password.value,
+            }),
+          }
+        );
+
+        if (!res.ok) {
+          const msg = await res.json();
+          throw new Error(msg.error || "Failed to update user");
+        }
+
+        alert("Account details updated!");
+
+      } catch (err) {
+        console.error(err);
+        alert("Could not update account.");
       }
     };
 
@@ -70,13 +134,54 @@ export default {
       fetchUser();
     });
 
-    return { user, balance, addTokens };
+    return { user, balance, firstName, lastName, password, onSubmit, addTokens };
   },
 };
 </script>
 
 <style scoped>
-.account-container {
-  padding: 1rem;
-}
+  .account-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .account-container form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 300px;
+  }
+
+  .form-buttons {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    margin: 20px 0;
+  }
+
+  .token-balance-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    width: 300px;
+  }
+
+  .token-balance-row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+  }
+
 </style>
