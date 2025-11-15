@@ -20,11 +20,11 @@
         </div>
         <div class="form-row">
           <label>Password (Leave blank to retain current)</label>
-          <input type="password" v-model="password" required />
+          <input type="password" v-model="password" />
         </div>
         <div class="form-buttons">
           <button class="default-button">Close</button>
-          <button class="highlight-button">Update</button>
+          <button class="highlight-button" type="submit">Update</button>
         </div>
       </form>
       
