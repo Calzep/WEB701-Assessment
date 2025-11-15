@@ -2,7 +2,7 @@
   <div class=banner>
     <div class="call-to-action">
       <p>Become a beneficiary</p>
-      <router-link to="/register"><button>Register Now</button></router-link>
+      <router-link to="/register"><button class="highlight-button">Register Now</button></router-link>
     </div>
   </div>
   <p class="NDR-blurb">Welcome to the Nelson Disaster Response website.  
@@ -10,8 +10,8 @@ Nelson Disaster Response offers shelter and food to people displaced by natural 
 Register now to become a beneficiary of NDR and access our emergency food supplies and shelter during disaster periods
   </p>
   <div class="quick-links">
-    <button>See our Services</button>
-    <button>Contact Us</button>
+    <router-link to="/services"><button class="highlight-button">See our Services</button></router-link>
+    <router-link><button class="highlight-button">Contact Us</button></router-link>
   </div>
 </template>
 
@@ -48,19 +48,8 @@ Register now to become a beneficiary of NDR and access our emergency food suppli
 
   .call-to-action button {
   margin-top: 12px;
-  padding: 10px 20px;
-  border: none;
-  background: hsl(0, 100%, 38%);
-  color: #fff;
   font-weight: bold;
   font-size: 18px;
-  cursor: pointer;
-}
-
-.call-to-action button:hover {
-  background: hsl(0, 0%, 100%);
-  border: 1px solid black;
-  color: #000;
 }
 
 .NDR-blurb {
@@ -79,21 +68,9 @@ Register now to become a beneficiary of NDR and access our emergency food suppli
 }
 
 .quick-links button {
-  margin-top: 12px;
-  padding: 10px 20px;
-  border: none;
-  background: hsl(0, 100%, 38%);
-  color: #fff;
   font-size: 18px;
-  cursor: pointer;
   width: 300px;
   height: 50px;
-}
-
-.quick-links button:hover {
-  background: hsl(0, 0%, 100%);
-  border: 1px solid black;
-  color: #000;
 }
 
 </style>

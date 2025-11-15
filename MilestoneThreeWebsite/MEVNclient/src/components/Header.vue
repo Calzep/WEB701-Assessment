@@ -8,7 +8,7 @@
       <router-link v-if="auth.isMember()" to="/service-purchase">Service Purchases</router-link>
     </div>
     <div class="right-nav">
-      <button v-if="auth.isLoggedIn()" @click="logout">Logout</button>
+      <button class="default-button" v-if="auth.isLoggedIn()" @click="logout">Logout</button>
       <template v-else>
         <router-link to="/login">Login</router-link>
         <router-link to="/register">Register</router-link>

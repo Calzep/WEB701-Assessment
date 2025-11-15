@@ -22,15 +22,17 @@ export default {
 
 <style>
 /* global styles */
-body {
-  padding: 0;
-  margin: 0;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .top-row {
   padding-left: 10px;
   display: flex;
@@ -38,5 +40,35 @@ body {
   align-items: center;
   gap: 20px;
   background-color: #dadadaff;
+}
+
+.highlight-button {
+  padding: 10px 20px;
+  border: none;
+  background: hsl(0, 100%, 38%);
+  border: 1px solid #00000000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.highlight-button:hover {
+  background: hsl(0, 0%, 100%);
+  border: 1px solid #000;
+  color: #000;
+}
+
+
+.default-button {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  background: hsl(0, 0%, 93%);
+  color: #000;
+  cursor: pointer;
+}
+
+.default-button:hover {
+  background: hsl(0, 100%, 38%);
+  border: 1px solid #fff;
+  color: #fff;
 }
 </style>
