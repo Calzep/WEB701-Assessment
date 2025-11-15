@@ -23,7 +23,7 @@
           <input type="password" v-model="password" />
         </div>
         <div class="form-buttons">
-          <button class="default-button">Close</button>
+          <router-link to="/"><button class="default-button" type="button">Close</button></router-link>
           <button class="highlight-button" type="submit">Update</button>
         </div>
       </form>
