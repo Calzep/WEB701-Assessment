@@ -160,6 +160,18 @@ app.get('/api/service/:id', async (req, res) => {
     }
 });
 
+//ANCHOR Create service
+app.post('/api/service', authenticationRequired, requiredRole("member"), async (req, res) => {
+    try {
+        const service = new ServiceModel(req.body);
+        await service.save();
+
+        res.json({ message: 'Created new service'});
+    } catch (err) {
+        res.status(400).json({ error: `Something went wrong: ${err.message}`})
+    }
+})
+
 
 //ANCHOR Create service purchase
 app.post('/api/service-purchase', authenticationRequired, requiredRole("beneficiary"), async (req, res) => {
