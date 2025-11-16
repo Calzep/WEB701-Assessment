@@ -35,7 +35,6 @@
 
 <script>
 import { ref, onMounted } from "vue";
-import auth from "../store/auth";
 
 export default {
   setup() {
@@ -75,16 +74,19 @@ export default {
     };
 
     onMounted(() => {
-      if (!auth.isLoggedIn()) {
-                alert("Access denied: Members only");
-                router.push("/")
-                return;
-            }
+      const token = localStorage.getItem("token");
+      if (!token) {
+        alert("Access denied: Members only");
+        window.location.href = "/";
+        return;
+      }
 
-      if (!auth.isMember()) {
-          alert("Access denied: Members only");
-          router.push("/")
-          return;
+      // Decode token to check role
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (payload.role !== "member") {
+        alert("Access denied: Members only");
+        window.location.href = "/";
+        return;
       }
 
       fetchPurchases();
