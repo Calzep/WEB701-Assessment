@@ -29,15 +29,18 @@
       <button class="default-button" type="submit" :disabled="loading">Register</button>
     </form>
 
-    <p v-if="error" style="color: red">{{ error }}</p>
+    <FeedbackMessage :message="feedbackMessage" :type="feedbackType" />
     <p>Already have an account? <router-link to="/login">Login</router-link></p>
   </div>
 </template>
 
 <script>
 import { useRouter } from 'vue-router'
+import FeedbackMessage from '../components/FeedbackMessage.vue';
 
 export default {
+  components : { FeedbackMessage },
+
   setup() {
     const router = useRouter()
     return { router }
@@ -49,14 +52,17 @@ export default {
       email: '',
       password: '',
       role: 'beneficiary',
-      error: null,
+      feedbackMessage: null,
+      feedbackType: 'error',
       loading: false,
     }
   },
   methods: {
     async onSubmit() {
-      this.error = null
+      this.feedbackMessage = "Creating your account..."
+      this.feedbackType = "loading"
       this.loading = true
+
       try {
         const res = await fetch('http://localhost:7011/api/register', {
           method: 'POST',
@@ -70,10 +76,21 @@ export default {
           }),
         })
         const data = await res.json()
+
         if (!res.ok) throw new Error(data.error || 'Registration failed')
-        this.router.push('/login')
+
+        
+        this.feedbackMessage = "Account Created!"
+        this.feedbackType = "success"
+        
+        setTimeout(() => {
+          this.router.push('/login')
+        }, 1000)
+
       } catch (err) {
-        this.error = err.message
+        console.error(err)
+        this.feedbackMessage = "Failed to create account"
+        this.feedbackType = "error"
       } finally {
         this.loading = false
       }
