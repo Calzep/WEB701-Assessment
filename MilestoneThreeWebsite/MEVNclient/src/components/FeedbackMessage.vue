@@ -1,6 +1,13 @@
 <template>
-  <transition enter-active-class="animate__animated animate__fadeInDown" leave-active-class="animate__animated animate__fadeOutUp">
-    <div v-if="message" class="feedback" :class="type">
+  <transition
+    enter-active-class="animate__animated animate__fadeInDown"
+    leave-active-class="animate__animated animate__fadeOutUp"
+  >
+    <div
+      v-if="message"
+      class="feedback animate__animated"
+      :class="[type, animationClass]"
+    >
       {{ message }}
     </div>
   </transition>
@@ -10,9 +17,22 @@
 export default {
   props: {
     message: String,
-    type: { 
-      type: String, // "success | error | loading"
+    type: {
+      type: String, // "success" | "error" | "loading"
       default: "success"
+    }
+  },
+
+  computed: {
+    animationClass() {
+      switch (this.type) {
+        case "loading":
+          return "animate__pulse animate__infinite";
+        case "error":
+          return "animate__shakeX";
+        default:
+          return "";
+      }
     }
   }
 }
