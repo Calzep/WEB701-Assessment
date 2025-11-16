@@ -10,5 +10,6 @@ This repository contains all applications and application prototypes created by 
 
 ## Code
 - Express Prototype: ./ExpressAPIPrototype
-- Implementation for ./Milestone three: MilestoneThreeWebsite
+- Implementation for Milestone three: ./MilestoneThreeWebsite
+- Backup database for the finished website: ./SharedMExNDatabase_backup
 
