@@ -35,6 +35,8 @@
           <button class="highlight-button" @click="addTokens">Add 10 Tokens</button>
         </div>
       </div>
+
+      <FeedbackMessage :message="feedbackMessage" :type="feedbackType" />
     </template>
 
     <template v-else>
@@ -46,14 +48,18 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import FeedbackMessage from "../components/FeedbackMessage.vue";
 
 export default {
+  components: {FeedbackMessage},
   setup() {
     const user = ref(null);
     const balance = ref(0);
     const firstName = ref("");
     const lastName = ref("");
     const password = ref("");
+    const feedbackMessage = ref(null);
+    const feedbackType = ref("error");
 
     const fetchUser = async () => {
       try {
@@ -76,11 +82,14 @@ export default {
       } catch (err) {
         console.error(err);
       }
-    };
+    }
 
     const onSubmit = async () => {
       try {
         const token = localStorage.getItem("token");
+
+        feedbackMessage.value = "Updating your details...",
+        feedbackType.value = "loading"
 
         const res = await fetch(
           `http://localhost:7011/api/user/${user.value.id}`,
@@ -103,11 +112,13 @@ export default {
           throw new Error(msg.error || "Failed to update user");
         }
 
-        alert("Account details updated!");
+        feedbackMessage.value = "Details updated!",
+        feedbackType.value = "success"
 
       } catch (err) {
         console.error(err);
-        alert("Could not update account.");
+        feedbackMessage.value = "Failed to update your details",
+        feedbackType.value = "error"
       }
     };
 
@@ -124,9 +135,15 @@ export default {
         });
         if (!res.ok) throw new Error("Failed to add tokens");
         const data = await res.json();
+
         balance.value = data.tokens;
+        feedbackMessage.value = "Tokens added!",
+        feedbackType.value = "success"
+
       } catch (err) {
         console.error(err);
+        feedbackMessage.value = err,
+        feedbackType.value = "error"
       }
     };
 
@@ -134,8 +151,8 @@ export default {
       fetchUser();
     });
 
-    return { user, balance, firstName, lastName, password, onSubmit, addTokens };
-  },
+    return { user, balance, firstName, lastName, password, feedbackMessage, feedbackType, onSubmit, addTokens };
+  }
 };
 </script>
 
