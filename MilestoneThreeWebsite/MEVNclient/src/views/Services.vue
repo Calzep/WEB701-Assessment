@@ -138,8 +138,11 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   padding: 10px;
+  align-items: center;
 }
 
-
+.purchase button {
+  width: 175px;
+}
 
 </style>
