@@ -1,7 +1,6 @@
 <template>
   <div class="services-header">
     <h2>Our Services</h2>
-
   </div>
   <div class="services-container">
     <p v-if="services.length === 0">There are no services available at this time.</p>
@@ -84,6 +83,10 @@ export default {
 </script>
 
 <style>
+.services-header {
+  padding-left: 20px;
+}
+
 .services-container {
   display: flex;
   flex-flow: column nowrap;
