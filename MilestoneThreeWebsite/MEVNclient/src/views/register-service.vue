@@ -30,13 +30,16 @@
             <br /><br />
             <button class="highlight-button" type="submit">Register Service</button>
         </form>
-        <p v-if="error" style="color: red">{{ error }}</p>
+        <FeedbackMessage :message="feedbackMessage" :type="feedbackType" />
     </div>
 </template>
 
 <script>
     import auth from "../store/auth"
+    import FeedbackMessage from "../components/FeedbackMessage.vue";
     export default {
+        components : { FeedbackMessage },
+
         setup() {},
         data() {
             return {
@@ -44,14 +47,17 @@
                 description: '',
                 type: 'Food',
                 tokenCost: 0,
-                error: null,
-                loading: false
+                loading: false,
+                feedbackMessage: null,
+                feedbackType: "error"
             }
         },
         methods: {
             async onSubmit() {
-                this.error = null
+                this.feedbackMessage = "Creating new service..."
+                this.feedbackType = "loading"
                 this.loading = true
+
                 try {
                     if (isNaN(this.tokenCost)) throw new Error ("Token cost must be a number")
                     const res = await fetch('http://localhost:7011/api/service', {
@@ -69,11 +75,17 @@
                             type: this.type
                         })
                     })
+
                     const data = await res.json()
+
                     if (!res.ok) throw new Error (data.error || 'Failed to register service')
-                    alert("New service registered")
+
+                    this.feedbackMessage = "New Service Registered!"
+                    this.feedbackType = "success"
                 } catch (err) {
-                    this.error = err.message
+                    console.log(err)
+                    this.feedbackMessage = "Failed to register service"
+                    this.feedbackType = "error"
                 } finally {
                     this.loading = false
                 }
