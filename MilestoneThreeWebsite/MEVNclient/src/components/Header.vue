@@ -1,17 +1,17 @@
 <template>
   <nav class="nav">
     <div class="left-nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/services">Services</router-link>
+      <router-link to="/"><p class="nav-link animate__animated">Home</p></router-link>
+      <router-link to="/services"><p class="nav-link animate__animated">Services</p></router-link>
 
-      <router-link v-if="auth.isLoggedIn()" to="/account">Account</router-link>
-      <router-link v-if="auth.isMember()" to="/member-console">Member Portal</router-link>
+      <router-link v-if="auth.isLoggedIn()" to="/account"><p class="nav-link animate__animated">Account</p></router-link>
+      <router-link v-if="auth.isMember()" to="/member-console"><p class="nav-link animate__animated">Member Portal</p></router-link>
     </div>
     <div class="right-nav">
       <button class="default-button" v-if="auth.isLoggedIn()" @click="logout">Logout</button>
       <template v-else>
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Register</router-link>
+        <router-link to="/login"><p class="nav-link animate__animated">Login</p></router-link>
+        <router-link to="/register"><p class="nav-link animate__animated">Register</p></router-link>
       </template>
     </div>
     
@@ -56,4 +56,9 @@ export default {
 .right-nav {
   margin-left: auto;
 }
+
+.nav-link:hover {
+  animation: pulse 0.2s;
+}
+
 </style>

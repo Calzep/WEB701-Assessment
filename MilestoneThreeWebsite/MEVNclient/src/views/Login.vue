@@ -14,16 +14,20 @@
       <button class="default-button" type="submit" :disabled="loading">Login</button>
     </form>
 
-    <p v-if="error" style="color: red">{{ error }}</p>
+    <FeedbackMessage :message="feedbackMessage" :type="feedbackType" />
+
     <p>Don't have an account? <router-link to="/register">Register</router-link></p>
   </div>
 </template>
 
 <script>
 import auth from '../store/auth'
+import FeedbackMessage from '../components/FeedbackMessage.vue';
 import { useRouter } from 'vue-router'
 
 export default {
+  components : { FeedbackMessage },
+
   setup() {
     const router = useRouter()
     return { auth, router }
@@ -32,26 +36,37 @@ export default {
     return {
       email: '',
       password: '',
-      error: null,
+      feedbackMessage: null,
+      feedbackType: 'error',
       loading: false,
     }
   },
   methods: {
     async onSubmit() {
-      this.error = null
       this.loading = true
+      this.feedbackType = "loading"
+      this.feedbackMessage = "Logging in..."
       try {
         const res = await fetch('http://localhost:7011/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: this.email, password: this.password }),
         })
+
         const data = await res.json()
         if (!res.ok) throw new Error(data.error || 'Login failed')
-        auth.login(data.token)
-        this.router.push('/')
+
+        this.feedbackType = "success"
+        this.feedbackMessage = "Login successful!"
+
+        setTimeout(() => {
+          auth.login(data.token)
+          this.router.push('/')
+        }, 1000)
+
       } catch (err) {
-        this.error = err.message
+        this.feedbackType = "error"
+        this.feedbackMessage = err.message
       } finally {
         this.loading = false
       }
