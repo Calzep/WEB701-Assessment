@@ -1,7 +1,7 @@
 <template>
   <div class=banner>
     <div class="call-to-action">
-      <p>Become a beneficiary</p>
+      <p>Become a Beneficiary</p>
       <router-link to="/register"><button class="highlight-button">Register Now</button></router-link>
     </div>
   </div>
