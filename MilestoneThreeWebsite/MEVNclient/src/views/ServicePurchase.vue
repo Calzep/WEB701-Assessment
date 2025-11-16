@@ -108,4 +108,9 @@ export default {
   padding: 8px;
   text-align: left;
 }
+
+.service-purchase-container {
+  padding: 20px;
+}
+
 </style>
