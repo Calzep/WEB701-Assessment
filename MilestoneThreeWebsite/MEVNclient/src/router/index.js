@@ -8,6 +8,7 @@ import Register from '../views/Register.vue'
 import Services from '../views/Services.vue'
 import Account from '../views/Account.vue'
 import ServicePurchase from '../views/ServicePurchase.vue'
+import MemberConsole from '../views/MemberConsole.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
@@ -16,6 +17,7 @@ const routes = [
   { path: '/services', name: 'Services', component: Services },
   { path: '/account', name: 'Account', component: Account, meta: { requiresAuth: true } },
   { path: '/service-purchase', name: 'ServicePurchase', component: ServicePurchase, meta: { requiresAuth: true, memberOnly: true } },
+  { path: '/member-console', name: 'MemberConsole', component: MemberConsole, meta: { requiresAuth: true, memberOnly: true }}
 ]
 
 const router = createRouter({

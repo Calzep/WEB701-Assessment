@@ -5,7 +5,7 @@
       <router-link to="/services">Services</router-link>
 
       <router-link v-if="auth.isLoggedIn()" to="/account">Account</router-link>
-      <router-link v-if="auth.isMember()" to="/service-purchase">Service Purchases</router-link>
+      <router-link v-if="auth.isMember()" to="/member-console">Member Portal</router-link>
     </div>
     <div class="right-nav">
       <button class="default-button" v-if="auth.isLoggedIn()" @click="logout">Logout</button>
